@@ -41,9 +41,8 @@ def ReadFile(file_path):
                     DocumentName = OUTPUT_DIRECTORY + line[match_len:].strip("\n").strip(" ").strip("\r") + ".md"
                     if DocumentName != "":
                         fo = open(DocumentName.decode('utf-8').encode('gb2312'), "a")
-                else:
-                    if fo:
-                        fo.write(line)
+                if fo:
+                    fo.write(line)
             else:
                 if fo:
                     fo.write(line)
