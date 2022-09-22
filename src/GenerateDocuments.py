@@ -25,8 +25,12 @@ def ReadFile(file_path):
     f = open(file_path, "rb")
     line = f.readline()
     while line:
+        # 因为文件在output目录下，资源文件在output目录的上层，所以在索引资源的时候做一次..层级替换
         if line.startswith("![]("):
             line = line.replace("![](", "![](../")
+        # 将代码部分的中文\r\n做\n处理，避免一行换行被处理成两行空格，不美观
+        if "\r\n" in line:
+            line = line.replace("\r\n", "\n")
         print(line)
         ret = re.match("^[#]*", line).group(0)
         if ret:
@@ -36,7 +40,7 @@ def ReadFile(file_path):
                 if line[match_len:].startswith(" ") and not line[match_len:].strip("\n").strip("\r").endswith("#"):
                     DocumentName = OUTPUT_DIRECTORY + line[match_len:].strip("\n").strip(" ").strip("\r") + ".md"
                     if DocumentName != "":
-                        fo = open(DocumentName.decode('utf-8').encode('gb2312'), "wb")
+                        fo = open(DocumentName.decode('utf-8').encode('gb2312'), "a")
                 else:
                     if fo:
                         fo.write(line)
@@ -55,4 +59,4 @@ def ReadFile(file_path):
 if __name__ == '__main__':
     print("====================开始生成文件========================")
     ClearFile(r"..\output\\")
-    ReadFile("..\Rime.md")
+    ReadFile("..\所念皆星辰.md".decode('utf-8').encode('gb2312'))
