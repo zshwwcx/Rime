@@ -1,9 +1,17 @@
 # -*- coding: UTF-8 -*-
+"""
+@author: zhangsuohao
+@contact: zhangshnju@gmail.com
+@file: GenerateDocuments.py
+@time: 2022/9/22 19:34
+@desc: 将《所念皆星辰.md》文件，按照标题内容拆分，生成至output目录下，拆分为对应标题以及内容的独立文本
+ """
 import os
 import re
 
 DocumentName = ""
 DocumentContent = ""
+OUTPUT_DIRECTORY = "../output/"
 fo = None
 
 # 先清理一遍目录下之前的文件
@@ -21,7 +29,7 @@ def ReadFile(file_path):
     global DocumentName
     global DocumentContent
     global fo
-    OUTPUT_DIRECTORY = "../output/"
+    global OUTPUT_DIRECTORY
     f = open(file_path, "rb")
     line = f.readline()
     while line:
