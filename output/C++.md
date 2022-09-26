@@ -2,6 +2,12 @@
 
 重新刷一遍《C++ Prime Plus》
 
+```神奇
+在线C++编译器，实时跑demo函数
+https://www.onlinegdb.com/online_c_compiler
+https://wandbox.org/
+```
+
 ## constexpr
 
 C++11的改善——常量表达式，允许程序利用编译时的计算能力。
@@ -330,4 +336,72 @@ C，C++程序编译时内存分为5大存储区：堆、栈、全局静态区、
 <https://stackoverflow.com/questions/11227809/why-is-processing-a-sorted-array-faster-than-processing-an-unsorted-array>
 
 ==========================================================================================================
+
+# C++
+
+## 模板元编程/泛型编程
+
+## 类型转换：隐式转换和显式转换
+
+当一个值拷贝给另一个兼容类型的值时，隐式转换会自动进行。所谓隐式转换，是指不需要用户干预，编译器私下进行的类型转换行为。
+
+C++面向对象的多态特性，就是通过父类的类型实现对子类的封装。通过隐式转换，你可以直接将一个子类的对象使用父类的类型进行返回。再比如，数值和布尔类型的转换，整数和浮点数的转换等。某些方面来说，隐式转换给C++程序开发者带来了不小的便捷。C++是一门强类型语言，类型的检查是非常严格的。如果没有类型的隐式转换，这将给程序开发者带来很多的不便。
+
+### C++隐式转换的原则
+
+1.基本数据类型 基本数据类型的转换以取值范围的作为转换基础（保证精度不丢失）。隐式转换发生在从小->大的转换中。比如从char转换为int。从int->long。
+
+2.自定义对象子类对象可以隐式的转换为父类对象。
+
+
+## RVO和NRVO
+
+```c++
+#include <iostream>
+
+using namespace std;
+
+class Data {
+public:
+    Data() {cout <<"Constructor" << endl;}
+    Data(const Data &data) {cout << "Copy Constructor" << endl;}
+    ~Data() {cout << "Destructor" << endl;}
+
+    int mem_var;
+};
+
+Data process(int i) {
+    Data data;
+    data.mem_var = 1;
+    return data;
+}
+
+Data process1(Data data) {
+    return data;
+}
+
+int main() {
+    printf("===process===\n");
+    Data data;
+    data = process(5);
+
+    printf("===process1===\n");
+    Data data2;
+    data = process1(data2);
+    
+    return 0;
+}
+```
+
+### RVO优化(Return Value Optimization)
+
+返回值优化，return value optimization, 这是一种编译器优化机制，当函数返回一个对象的时候，如果自己创造一个临时对象进行返回（对应于main函数里，我们的String("hi")），那么这个临时对象会消耗一个构造函数的调用（String(const char*)），一个复制构造函数的调用（String(const String& s)），以及一个析构函数的调用（析构掉临时值）
+
+经过返回值优化，就可以将成本降低到一个构造函数的代价。这样就省去了一次拷贝构造函数的调用和依次析构函数的调用。
+
+注意从C++17开始，RVO优化不再是可选的，而是默认的。
+
+### NRVO优化(Named Return Value Optimization)
+
+具名返回值优化（NRVO），是对于按值返回“具名对象”（就是有名字的变量）时的优化手段，其实道理是一样的，但由于返回的值是具名变量，情况会复杂很多。所以，能执行优化的条件更苛刻。
 
