@@ -1,12 +1,12 @@
 # C++
 
-重新刷一遍《C++ Prime Plus》
-
-```神奇
+```gcc compiler online
 在线C++编译器，实时跑demo函数
 https://www.onlinegdb.com/online_c_compiler
 https://wandbox.org/
 ```
+
+重新刷一遍《C++ Prime Plus》
 
 ## constexpr
 
@@ -95,7 +95,7 @@ double == 8 Byte.
 
 保留区: 0地址开始的c库
 
-![C++内存区域](res/C++/Memory_arch.PNG)
+![C++内存区域](../res/C++/Memory_arch.PNG)
 
 ## 智能指针
 

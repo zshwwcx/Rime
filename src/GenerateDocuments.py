@@ -34,8 +34,10 @@ def ReadFile(file_path):
     line = f.readline()
     while line:
         # 因为文件在output目录下，资源文件在output目录的上层，所以在索引资源的时候做一次..层级替换
-        if line.startswith("![]("):
-            line = line.replace("![](", "![](../")
+        if line.startswith("![](res"):
+            line = line.replace("![](res", "![](../res")
+        if "](res" in line:
+            line = line.replace("](res", "](../res")
         # 将代码部分的中文\r\n做\n处理，避免一行换行被处理成两行空格，不美观
         if "\r\n" in line:
             line = line.replace("\r\n", "\n")

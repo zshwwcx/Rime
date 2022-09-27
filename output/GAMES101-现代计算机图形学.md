@@ -75,18 +75,18 @@ The process of applying a material to an object.
 
 Specular , Diffuse, Ambient
 
-![Blinn_Phong](res\GAMES101\Blinn-Phong.PNG)
+![Blinn_Phong](../res\GAMES101\Blinn-Phong.PNG)
 
 ### Diffuse Reflection
 
 Light is scattered uniformly in all directions
 入射光线被均匀地从所有方向反射出去
 
-![Diffuse_Reflection](res\GAMES101\Diffuse_Reflection.PNG)
+![Diffuse_Reflection](../res\GAMES101\Diffuse_Reflection.PNG)
 
 ### Lambertian(Diffuse) Shading
 
-![Lambert Shading](res\GAMES101\Lambert_Shading.PNG)
+![Lambert Shading](../res\GAMES101\Lambert_Shading.PNG)
 
 Ld = kd*(I/r^2)*max(0, n·l)
 
@@ -102,7 +102,7 @@ Intensity depends on view direction.
 
 Shading that does not depend on anything.
 
-![Ambient](res/GAMES101/Ambient_Term.PNG)
+![Ambient](../res/GAMES101/Ambient_Term.PNG)
 
 Ambient + Specular + Diffuse = Blinn_Phong Reflection
 
@@ -112,7 +112,7 @@ Flat shading 面/ Gouraud shading 顶点/ Phong shading像素
 
 ### Graphics(Real-time Rendering) Pipeline 实时渲染管线
 
-![Real-time Pipeline](res/GAMES101/RTR_Pipeline.PNG)
+![Real-time Pipeline](../res/GAMES101/RTR_Pipeline.PNG)
 
 ### Texture Mapping纹理映射
 
@@ -121,24 +121,24 @@ Flat shading 面/ Gouraud shading 顶点/ Phong shading像素
 Interpolate Content: Texture coordinates, colors, normal vectors, ...
 
 ### Bilinear interpolation 双线性插值
-![双线性插值](res/GAMES101/Bilinear_lerp.PNG)
+![双线性插值](../res/GAMES101/Bilinear_lerp.PNG)
 
 ### Mipmap
 
 Allowing(fast, approximate, square) range queries.(快，但是不准确，正方形范围查询)
 
-![mip_map](res/GAMES101/Mipmap.PNG)
+![mip_map](../res/GAMES101/Mipmap.PNG)
 
 级数求和，多了1/3的图片内存占用。
 
 ### Trilinear lerp
-![三线性插值](res/GAMES101/tri_lerp.PNG)
+![三线性插值](../res/GAMES101/tri_lerp.PNG)
 
 #### Mipmap的缺陷--Overblur
 ![](../res/GAMES101/Mipmap_limitation.PNG)
 
 ### Anisotroic Filtering 各向异性过滤
-![各向异性过滤](res/GAMES101/anisotroic_filter.PNG)
+![各向异性过滤](../res/GAMES101/anisotroic_filter.PNG)
 ``
 会多消耗3倍的存储空间
 
@@ -192,7 +192,7 @@ shadow map分辨率会影响阴影质量，分辨率低，会导致阴影边缘�
 
 ### Soft shadow maps 软阴影(半阴影)
 
-![软阴影](res/GAMES101/Soft_shadow.PNG)
+![软阴影](../res/GAMES101/Soft_shadow.PNG)
 
 点光源不存在软阴影
 
@@ -216,7 +216,7 @@ Axis-Aligned Bounding Box(AABB)
 
 ### Spatial Partitions 
 
-![八叉树、KD树、BSP树](res/GAMES101/Spatial_partitioning_examples.PNG)
+![八叉树、KD树、BSP树](../res/GAMES101/Spatial_partitioning_examples.PNG)
 
 ### Object Partitions & Bounding Volume Hierarchy(BVH)
 
@@ -247,7 +247,7 @@ Perform lighting calculations in a physically correct manner.
 ![](../res/GAMES101/Light_measurement.PNG)
 
 Radiant Intensity
-![Radiant Intensity](res/GAMES101/Radiant_intensity.PNG)
+![Radiant Intensity](../res/GAMES101/Radiant_intensity.PNG)
 
 Ω = A/r^2  立体角= 面积/半径的平方
 
@@ -256,18 +256,18 @@ Inensity: 光源在任意一个方向上的强度。
 
 Irradiance
 
-![Irradiance](res/GAMES101/Irradiance.PNG)
+![Irradiance](../res/GAMES101/Irradiance.PNG)
 
 Radiance
 
-![Radiance](res/GAMES101/Radiance.PNG)
+![Radiance](../res/GAMES101/Radiance.PNG)
 
 ### Bidirectional Reflectance Distribution Function(BRDF)
 
-![BRDF](res/GAMES101/BRDF.PNG)
+![BRDF](../res/GAMES101/BRDF.PNG)
 
 
-![反射方程](res/GAMES101/Reflection_equation.PNG)
+![反射方程](../res/GAMES101/Reflection_equation.PNG)
 
 L = E + KL ==> L = (1-K)^-1 * E ==> L = E + KE + K^2*E + K^3*E + ...
 
@@ -276,7 +276,7 @@ E: 自发光, KE: 直接光照， K^2E: 间接光照, 高阶KE: 全局光照
 
 ### Monte Carlo Integration 蒙特卡洛积分
 
-![蒙特卡洛积分](res/GAMES101/Monte_Carlo_Integration.PNG)
+![蒙特卡洛积分](../res/GAMES101/Monte_Carlo_Integration.PNG)
 
 ### Path Tracing 路径追踪
 
@@ -296,7 +296,7 @@ Radiance -> Color ====>  Gamma校正
 
 ## Diffuse/Lambert Material
 
-![Albedo](res/GAMES101/Albedo.PNG) 
+![Albedo](../res/GAMES101/Albedo.PNG) 
 
 漫反射BRDF
 
@@ -341,7 +341,7 @@ Various models to describe it.
 
 #### Beckmann NDF
 
-![Beckmann](res/GAMES202/NDF_Backmann.PNG)
+![Beckmann](../res/GAMES202/NDF_Backmann.PNG)
 
 #### GGX(or Trowbridge-Reitz)
 

@@ -27,7 +27,7 @@ Cross platform.
 
 Alternatives(DirectX, Vulkan, etc.)
 
-![Summary: in each pass](res/GAMES202/OpenGL_Summary.PNG)
+![Summary: in each pass](../res/GAMES202/OpenGL_Summary.PNG)
 
 ## EP3 Real Time Shadows
 
@@ -84,19 +84,19 @@ In this section, t must be larger than mean.(t在均值右边，不等式才有�
 
 ### Distance field
 
-![Distance Functions](res/GAMES202/SDF.PNG)
+![Distance Functions](../res/GAMES202/SDF.PNG)
 
 Usage:
 
 1. Ray Marching(sphere tracing) to perform ray-SDF intersection.
 
-![Ray marching](res/GAMES202/RayMarching_SDF.PNG)
+![Ray marching](../res/GAMES202/RayMarching_SDF.PNG)
 
 SDF适用于运动物体，但是不适用于形变物体。
 
 2. Use SDF to determine the (approx.) percentage of occlusion.
 
-![Soft shadows/SDF](res/GAMES202/ShadowMapping_SDF.PNG)
+![Soft shadows/SDF](../res/GAMES202/ShadowMapping_SDF.PNG)
 
 Pros:
 - Fast*
@@ -126,7 +126,7 @@ General solution - Monte Carlo integration
 Problem - can be slow
 - In general, sampling is not preferred in shaders*
 
-![Split Sum](res/GAMES202/IBL_Shading.PNG)
+![Split Sum](../res/GAMES202/IBL_Shading.PNG)
 
 ### Spherical Harmonics
 
@@ -167,7 +167,7 @@ Handles shadows and global illumination!
 
 解决微表面模型难以处理的BRDF (多层材质)
 
-![why](res/GAMES202/Disney_BRDF.PNG)
+![why](../res/GAMES202/Disney_BRDF.PNG)
 
 ![](../res/GAMES202/DisneyPBR_Pros_Cons.PNG)
 
