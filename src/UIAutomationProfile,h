@@ -1,0 +1,143 @@
+// Fill out your copyright notice in the Description page of Project Settings.
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "UObject/Object.h"
+#include "KGUI/Public/Profiling/KGUMGMemorySnapshot.h"
+#include "KGUI/Public/Profiling/KGMemoryStatisticsTree.h"
+#include "KGUI/Public/Profiling/KGMemoryStatisticsTreeAnalyser.h"
+#include "Blueprint/GameViewportSubsystem.h"
+#include "Core/Common.h"
+#include "UIAutomationProfile.generated.h"
+
+DECLARE_LOG_CATEGORY_EXTERN(LogUIAutomationProfile, Log, All);
+
+USTRUCT()
+struct FUIProfileData
+{
+	GENERATED_BODY()
+
+	FName Name;
+	double Time = .0f;
+	int32 UObjectNum = 0;
+	float TotalTrackedMemoryBefore = .0f;
+	float TotalTrackedMemoryOnShow = .0f;
+	float TotalTrackedMemoryOnClose = .0f;
+	float LuaMemoryBefore = .0f;
+	float LuaMemoryOnShow = .0f;
+	float LuaMemoryOnClose = .0f;
+	float UIMemoryBefore = .0f;
+	float UIMemoryOnShow = .0f;
+	float UIMemoryOnClose = .0f;
+	float UObjectMemoryBefore = .0f;
+	float UObjectMemoryOnShow = .0f;
+	float UObjectMemoryOnClose = .0f;
+	float TextureMemoryBefore = .0f;
+	float TextureMemoryOnShow = .0f;
+	float TextureMemoryOnClose = .0f;
+	TSet<FString> DependenceAtlasSet;
+	TSet<FString> DependenceTextureSet;
+	TMap<FString, TPair<FString, double>> SlateStatValueArray;
+	FString Error;
+	FString ScreenShotPath;
+	FString OverdrawScreenShotPath;
+	TSet<FString> UObjectsLuaBefore;
+	TArray<FString> UObjectsLuaAdd;
+	float SlateOverDrawAvg; 
+	float SlateMaxOverDrawCount;
+	float SlateOverDrawWithoutMTAvg;
+	float SlateMaxOverDrawWithoutMTCount;
+
+	FKGMemoryStatisticsTreeAnalyser AnalyserBeforeOpen;
+	FKGMemoryStatisticsTreeAnalyser Analyser;
+};
+/**
+ * 
+ */
+UCLASS()
+class KGUI_API UUIAutomationProfile : public UObject
+{
+	GENERATED_BODY()
+	
+public:
+	UFUNCTION(BlueprintCallable)
+	void Init();
+	
+	UFUNCTION(BlueprintCallable)
+	void StartSingleUIProfile(FString& UIName, float LuaMemory);
+
+	UFUNCTION(BlueprintCallable)
+	void OnSingleUIOpened(UUserWidget* Widget, FString WbpName, float LuaMemory, int OpenTimeMS = 0);
+
+	UFUNCTION(BlueprintCallable)
+	void OnSingleUIClosed(float LuaMemory);
+
+	UFUNCTION(BlueprintCallable)
+	void AddDependenceAtlas(UPaperSprite* PaperSprite);
+
+	UFUNCTION(BlueprintCallable)
+	void AddDependenceTexture(UTexture* Texture);
+
+	UFUNCTION(BlueprintCallable)
+	void AddDependenceAtlasName(FString AtlasName);
+
+	UFUNCTION(BlueprintCallable)
+	void AddDependenceTextureName(FString TextureName);
+
+	UFUNCTION(BlueprintCallable)
+	void StartCollectSlateStatData();
+
+	UFUNCTION(BlueprintCallable)
+	void StopCollectSlateStatData();
+
+#if STATS
+	void DumpStatStackNode(struct FRawStatStackNode* Root);
+	void ProcessStatValue(FStatMessage Item);
+#endif
+
+	UFUNCTION(BlueprintCallable)
+	void TakeSnapShot();
+
+	UFUNCTION(BlueprintCallable)
+	void TakeSnapShotOverdraw();
+
+	UFUNCTION(BlueprintCallable)
+	void GetOverDrawData();
+
+	UFUNCTION(BlueprintCallable)
+	void CollapseMaterialForOverDrawCheck(UUserWidget* Widget);
+
+	UFUNCTION(BlueprintCallable)
+	void GetOverDrawDataWithOutMaterial();
+
+	UFUNCTION(BlueprintCallable)
+	void GetKGMemoryStatisticsTreeAnalyserBeforeUIOpen();
+
+	UFUNCTION(BlueprintCallable)
+	void GetKGMemoryStatisticsTreeAnalyser(FString WbpName);
+
+	UFUNCTION(BlueprintCallable)
+	void ReportError(FString Error);
+
+	UFUNCTION(BlueprintCallable)
+	void ExportCSV();
+
+	FString CurTestUIName;
+
+	UFUNCTION(BlueprintCallable)
+	void ForceGarbageCollection();
+
+	void dumpUObjectsLuaBefore();
+	void dumpUObjectsLuaAdd();
+
+private:
+	bool bEnabled = false;
+	double StartTime;
+	TArray<FString> SlateStatNameArray;
+	TArray<FUIProfileData> UIProfileDataArray;
+	FUIProfileData TempUIProfileData;
+	
+	const float InvToMb = 1.0 / (1024 * 1024);
+};
+
