@@ -1,0 +1,24 @@
+-- Flowchart节点用到的双端公用宏
+
+-- AFSay节点的文本类型
+SAY_TEXT_TYPE = {
+    ASIDE_TALK = 1,  -- 画外音
+    BUBBLE = 2,  -- 气泡
+    ASIDE_TALK_WITH_CHAT = 3,  -- 画外音(发到聊天频道)
+    BUBBLE_WITH_CHAT = 4,  -- 气泡(发到聊天频道)
+}
+
+SAY_TEXT_TYPE_REVERSE = {}
+for k, v in pairs(SAY_TEXT_TYPE) do
+    SAY_TEXT_TYPE_REVERSE[v] = k
+end
+
+MAX_SAY_TIME = 60
+
+SAY_TEXT_TYPE_WITH_CHAT = {
+    [SAY_TEXT_TYPE.ASIDE_TALK_WITH_CHAT] = SAY_TEXT_TYPE.ASIDE_TALK,
+    [SAY_TEXT_TYPE.BUBBLE_WITH_CHAT] = SAY_TEXT_TYPE.BUBBLE,
+}
+
+-- 隐形怪id
+FLOWCHART_INVISIBLE_NPC_ID = 7109001

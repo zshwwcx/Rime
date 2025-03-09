@@ -1,0 +1,14 @@
+---@class UITabData
+---@field public name string  名称
+---@field public iconPath string 图标路径
+---@field public bkgPath string 背景路径
+---@field public extraDesc string 扩展文本
+---@field public isLock boolean 是否解锁
+---@field public isEnable boolean 是否激活
+---@field public otherInfo any 附加信息
+---@field public redPointId string 红点Id
+---@field public redPointSuff string 红点的后缀
+
+---@class UITreeViewChildData
+---@field tabData table
+---@field children UITreeViewChildData[]
