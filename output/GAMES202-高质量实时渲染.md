@@ -21,6 +21,8 @@
 
 ### OpenGL
 
+https://learnopengl-cn.readthedocs.io/zh/latest/ 很有用的OpenGL学习Url
+
 Languages does not matter.
 
 Cross platform.
@@ -39,7 +41,7 @@ A 2-Pass Algorithm
 
 A image-space algorithm
 - Pro: no knowledge of scene's geometry is required
-- Con: causing self occlusion and aliasing issues
+- Con: causing self occlusion and aliasing issues 
 
 
 ### The math behind shadow mapping

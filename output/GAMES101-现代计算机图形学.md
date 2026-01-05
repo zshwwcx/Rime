@@ -353,7 +353,7 @@ Various models to describe it.
 
 #### Shadowing-Masking Term
 
-Or, the geometry term G.
+Or, the geometry term G.(Geometric attenuation term)
 
 ![](../res/GAMES202/Microfacet_G.PNG)
 
