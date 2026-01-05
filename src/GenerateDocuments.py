@@ -5,7 +5,7 @@
 @file: GenerateDocuments.py
 @time: 2022/9/22 19:34
 @desc: 将《所念皆星辰.md》文件，按照标题内容拆分，生成至output目录下，拆分为对应标题以及内容的独立文本
-@Intepreter: Python2.7.exe
+@Intepreter: Python3.8.exe
  """
 import os
 import re
